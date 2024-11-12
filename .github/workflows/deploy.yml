@@ -21,9 +21,9 @@ jobs:
         with:
           node-version: 16
 
-      # 使用最新的 NPM Install Action
+      # 安装依赖 (直接运行 npm install)
       - name: Install dependencies
-        uses: bahmutov/npm-install@v2
+        run: npm install
 
       # 使用 npm 脚本构建项目
       - name: Build project
