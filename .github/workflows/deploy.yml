@@ -11,15 +11,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 使用 Checkout Action
+      # Checkout 代码仓库
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      # 设置 Node.js 环境
-      - name: Setup Node
+      # 设置 Node.js 20
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 20 # 指定为 Node.js 20
+          node-version: 20
 
       # 安装依赖
       - name: Install dependencies
