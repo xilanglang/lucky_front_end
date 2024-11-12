@@ -11,22 +11,27 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # 使用最新版本的 Checkout Action
       - name: Checkout repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
+      # 使用最新版本的 Node.js Setup Action
       - name: Setup Node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: 16
 
+      # 使用最新的 NPM Install Action
       - name: Install dependencies
-        uses: bahmutov/npm-install@v1
+        uses: bahmutov/npm-install@v2
 
+      # 使用 npm 脚本构建项目
       - name: Build project
         run: npm run build
 
+      # 使用最新版本的 Upload Artifact Action
       - name: Upload production-ready build files
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: production-files
           path: ./dist
@@ -38,12 +43,14 @@ jobs:
     if: github.ref == 'refs/heads/main'
 
     steps:
+      # 使用最新版本的 Download Artifact Action
       - name: Download artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           name: production-files
           path: ./dist
 
+      # 使用最新版本的 GitHub Pages 部署 Action
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
